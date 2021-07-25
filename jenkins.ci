@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build docker image. Run tests and build app.') {
+            steps {
+                git 'https://github.com/itimershin/testapp'
+                sh 'sudo docker build . -t reactnginx'
+            }
+        }
+    }
+}
