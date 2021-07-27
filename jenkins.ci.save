@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build docker image. Run tests and build app.') {
+            steps {
+                git 'https://github.com/itimershin/testapp'
+                sh 'sudo docker build . -t reactnginx'
+            }
+        }
+	stage('Run stage'){
+	steps {
+		sh 'docker run -d -p 80:80 reactNginx'
+	    }
+	}
+    }
+}
+
+pipeline {
+    agent any 
+    stages {
+        stage('Build docker image') { 
+            steps {
+                echo 'Hello, Maven'
+                sh 'mvn --version'
+            }
+        }
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
+            steps {
+                echo 'Hello, JDK'
+                sh 'java -version'
+            }
+        }
+    }
+}
+                echo 'Hello, Maven'
+                sh 'mvn --version'
+                git 'https://github.com/itimershin/testapp'
+                sh 'sudo docker build . -t reactnginx'

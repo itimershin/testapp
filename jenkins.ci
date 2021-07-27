@@ -10,7 +10,8 @@ pipeline {
         }
 	stage('Run stage'){
 	steps {
-		sh 'sudo docker run --it --rm -p 80:80 reactnginx:latest'
+		sh 'sudo docker rm -f prod-server'
+		sh 'sudo docker run -it --rm -p 80:80 --name prod-server reactnginx'
 	    }
 	}
     }
