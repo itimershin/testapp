@@ -5,7 +5,7 @@ pipeline {
         stage('Build docker image. Run tests and build app.') {
             steps {
                 git 'https://github.com/itimershin/testapp'
-                sh 'sudo docker build . -t reactnginx'
+                sh 'docker build . -t reactnginx'
             }
         }
     }
