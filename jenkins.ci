@@ -10,7 +10,7 @@ pipeline {
         }
 	stage('Run stage'){
 	steps {
-		sh 'docker run -d -p 80:80 reactnginx'
+		sh 'sudo docker run -d -p 80:80 reactnginx'
 	    }
 	}
     }
