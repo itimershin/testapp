@@ -8,10 +8,6 @@ pipeline {
                 sh 'sudo docker build . -t reactnginx'
             }
         }
-	stage('hello from tests'){
-	    steps {
-	}
-	}
 	stage('Run stage'){
 	steps {
 		sh 'sudo docker run --it --rm -p 80:80 reactnginx:latest'
